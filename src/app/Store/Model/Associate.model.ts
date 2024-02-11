@@ -8,3 +8,9 @@ export interface Associate{
     associategroup:string;
     status:boolean;
 }
+
+export interface AssociateModel{
+    list: Associate[],
+    associateObj:Associate,
+    errorMessage:string
+}
