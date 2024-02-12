@@ -1,5 +1,14 @@
 {
     "associate":[
-        
+        {
+            "id":1,
+            "name":"Rohit Kumar",
+            "email":"rohit@gmail.com",
+            "phone":"07922657706",
+            "address":"West Bromwich",
+            "type":"CUSTOMER",
+            "associategroup":"level1",
+            "status":true
+        }
     ]
 }
