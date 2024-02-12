@@ -15,6 +15,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AssociateReducer } from './Store/Associate/Associate.Reducer';
 import { AssociateEffect } from './Store/Associate/Associate.Effect';
+import { AppEffects } from './Store/Common/App.Effects';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { AssociateEffect } from './Store/Associate/Associate.Effect';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({associate:AssociateReducer}, {}),
-    EffectsModule.forRoot([AssociateEffect]),
+    EffectsModule.forRoot([AssociateEffect,AppEffects]),
     //StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],

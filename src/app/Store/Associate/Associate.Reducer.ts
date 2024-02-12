@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { AssociateState } from "./Associate.State";
-import { loadassociatefail, loadassociatesuccess } from "./Associate.Action";
+import { addassociatesuccess, loadassociatefail, loadassociatesuccess } from "./Associate.Action";
 
 const _AssociateReducer = createReducer(AssociateState,
     on(loadassociatesuccess,(state,action)=>{
@@ -15,6 +15,16 @@ const _AssociateReducer = createReducer(AssociateState,
          ...state,
          list:[],
          errorMessage:action.errorMessage
+        } 
+    }),
+    on(addassociatesuccess,(state,action)=>{
+        const maxid = Math.max(...state.list.map(o=>o.id))
+        const _newData = {...action.inputdata}
+        _newData.id = maxid
+        return{
+         ...state,
+         list:[...state.list,_newData],
+         errorMessage:''
         } 
     })
 )
