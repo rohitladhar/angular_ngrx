@@ -4,7 +4,7 @@ import { AddassociateComponent } from '../addassociate/addassociate.component';
 import { Store } from '@ngrx/store';
 import { Associate } from 'src/app/Store/Model/Associate.model';
 import { getassociatelist } from 'src/app/Store/Associate/Associate.Selectors';
-import { getassociate, loadassociate } from 'src/app/Store/Associate/Associate.Action';
+import { deleteassociate, getassociate, loadassociate, openpopup } from 'src/app/Store/Associate/Associate.Action';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -34,6 +34,7 @@ export class AssociatelistingComponent implements OnInit {
   }
 
   FunctionAdd(){
+
     this.OpenPopup(0,'Create Associate');
   }
   FunctionEdit(code:number){
@@ -41,10 +42,13 @@ export class AssociatelistingComponent implements OnInit {
     this.OpenPopup(code,'Update Associate');
   }
   FunctionDelete(code:number){
-
+    if(confirm('do you want to remove?')){
+      this.store.dispatch(deleteassociate({code:code}));
+    }
   }
 
   OpenPopup(code:number, title:string){
+    this.store.dispatch(openpopup());
     this.dialog.open(AddassociateComponent,{
       width:'50%',
       enterAnimationDuration:'1000ms',

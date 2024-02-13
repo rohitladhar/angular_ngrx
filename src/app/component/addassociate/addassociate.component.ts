@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { addassociate } from 'src/app/Store/Associate/Associate.Action';
+import { addassociate, updateassociate } from 'src/app/Store/Associate/Associate.Action';
 import { Associate } from 'src/app/Store/Model/Associate.model';
 import { getassociate } from 'src/app/Store/Associate/Associate.Selectors';
 @Component({
@@ -57,8 +57,12 @@ export class AddassociateComponent implements OnInit{
         type:this.associateForm.value.type as string,
         status:this.associateForm.value.status as boolean
       }
-      this.store.dispatch(addassociate({inputdata:obj}))
       this.ClosePopup()
+      if(obj.id===0){
+        this.store.dispatch(addassociate({inputdata:obj}))
+      }else{
+        this.store.dispatch(updateassociate({inputdata:obj}))
+      }
     }
   }
 }

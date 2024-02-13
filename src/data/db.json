@@ -1,35 +1,14 @@
 {
   "associate": [
     {
-      "id": 1,
-      "name": "Rohit Kumar",
+      "id": "1",
+      "name": "Rohit",
       "email": "rohit@gmail.com",
-      "phone": "07922657706",
-      "address": "West Bromwich",
-      "type": "CUSTOMER",
-      "associategroup": "level1",
-      "status": true
-    },
-    {
-      "id": 2,
-      "name": "Bunty",
-      "email": "bunty@gmail.com",
       "phone": "07922657706",
       "associategroup": "level3",
       "address": "West Bromwich",
       "type": "SUPPLIER",
       "status": true
-    },
-    {
-      "id": 3,
-      "name": "Bunty",
-      "email": "bunty@gmail.com",
-      "phone": "07922657706",
-      "associategroup": "level2",
-      "address": "West Bromwich",
-      "type": "SUPPLIER",
-      "status": true
     }
-    
   ]
 }

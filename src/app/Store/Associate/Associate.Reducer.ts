@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { AssociateState } from "./Associate.State";
-import { addassociatesuccess, getassociatesuccess, loadassociatefail, loadassociatesuccess } from "./Associate.Action";
+import { addassociatesuccess, deleteassociatesuccess, getassociatesuccess, loadassociatefail, loadassociatesuccess, openpopup, updateassociatesuccess } from "./Associate.Action";
 
 const _AssociateReducer = createReducer(AssociateState,
     on(loadassociatesuccess,(state,action)=>{
@@ -33,7 +33,41 @@ const _AssociateReducer = createReducer(AssociateState,
             list: [...state.list, _newdata],
             errormessage: ''
         }
-    })
+    }),
+    on(updateassociatesuccess,(state,action)=>{
+        const _newdata = state.list.map(o=>{
+            return o.id===action.inputdata.id?action.inputdata:o
+        })
+      
+        return {
+            ...state,
+            list: _newdata,
+            errormessage: ''
+        }
+    }),
+    on(openpopup,(state,action)=>{
+        return{
+            ...state,   
+            associateObj:{
+                id: 0,
+                name: "",
+                email: "",
+                phone: "",
+                type: "CUSTOMER",
+                address: "",
+                associategroup: "level1",
+                status: true
+            }
+        } 
+    }),
+    on(deleteassociatesuccess, (state, action) => {
+        const _newdata = state.list.filter(o=>o.id!==action.code);
+        return {
+            ...state,
+            list: _newdata,
+            errormessage: ''
+        }
+    }),
 )
 export function AssociateReducer(state:any,action:any){
    return _AssociateReducer(state,action)
