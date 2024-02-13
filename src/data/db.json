@@ -1,64 +1,35 @@
 {
-    "associate":[
-        {
-            "id":1,
-            "name":"Rohit Kumar",
-            "email":"rohit@gmail.com",
-            "phone":"07922657706",
-            "address":"West Bromwich",
-            "type":"CUSTOMER",
-            "associategroup":"level1",
-            "status":true
-        },
-        {
-            "id":2,
-            "name":"Rohit Kumar",
-            "email":"rohit@gmail.com",
-            "phone":"07922657706",
-            "address":"West Bromwich",
-            "type":"CUSTOMER",
-            "associategroup":"level1",
-            "status":true
-        },
-        {
-            "id":3,
-            "name":"Rohit Kumar",
-            "email":"rohit@gmail.com",
-            "phone":"07922657706",
-            "address":"West Bromwich",
-            "type":"CUSTOMER",
-            "associategroup":"level1",
-            "status":true
-        },
-        {
-            "id":4,
-            "name":"Rohit Kumar",
-            "email":"rohit@gmail.com",
-            "phone":"07922657706",
-            "address":"West Bromwich",
-            "type":"CUSTOMER",
-            "associategroup":"level1",
-            "status":true
-        },
-        {
-            "id":5,
-            "name":"Rohit Kumar",
-            "email":"rohit@gmail.com",
-            "phone":"07922657706",
-            "address":"West Bromwich",
-            "type":"CUSTOMER",
-            "associategroup":"level1",
-            "status":true
-        },
-        {
-            "id":6,
-            "name":"Rohit Kumar",
-            "email":"rohit@gmail.com",
-            "phone":"07922657706",
-            "address":"West Bromwich",
-            "type":"CUSTOMER",
-            "associategroup":"level1",
-            "status":true
-        }
-    ]
+  "associate": [
+    {
+      "id": 1,
+      "name": "Rohit Kumar",
+      "email": "rohit@gmail.com",
+      "phone": "07922657706",
+      "address": "West Bromwich",
+      "type": "CUSTOMER",
+      "associategroup": "level1",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "Bunty",
+      "email": "bunty@gmail.com",
+      "phone": "07922657706",
+      "associategroup": "level3",
+      "address": "West Bromwich",
+      "type": "SUPPLIER",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "Bunty",
+      "email": "bunty@gmail.com",
+      "phone": "07922657706",
+      "associategroup": "level2",
+      "address": "West Bromwich",
+      "type": "SUPPLIER",
+      "status": true
+    }
+    
+  ]
 }

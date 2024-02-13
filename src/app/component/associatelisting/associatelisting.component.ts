@@ -4,7 +4,7 @@ import { AddassociateComponent } from '../addassociate/addassociate.component';
 import { Store } from '@ngrx/store';
 import { Associate } from 'src/app/Store/Model/Associate.model';
 import { getassociatelist } from 'src/app/Store/Associate/Associate.Selectors';
-import { loadassociate } from 'src/app/Store/Associate/Associate.Action';
+import { getassociate, loadassociate } from 'src/app/Store/Associate/Associate.Action';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -35,6 +35,13 @@ export class AssociatelistingComponent implements OnInit {
 
   FunctionAdd(){
     this.OpenPopup(0,'Create Associate');
+  }
+  FunctionEdit(code:number){
+    this.store.dispatch(getassociate({id:code}))
+    this.OpenPopup(code,'Update Associate');
+  }
+  FunctionDelete(code:number){
+
   }
 
   OpenPopup(code:number, title:string){

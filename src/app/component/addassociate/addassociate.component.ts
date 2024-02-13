@@ -1,6 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { addassociate } from 'src/app/Store/Associate/Associate.Action';
+import { Associate } from 'src/app/Store/Model/Associate.model';
+import { getassociate } from 'src/app/Store/Associate/Associate.Selectors';
 @Component({
   selector: 'app-addassociate',
   templateUrl: './addassociate.component.html',
@@ -11,13 +15,18 @@ export class AddassociateComponent implements OnInit{
   isedit = false;
   dialogdata:any;
   constructor(private builder:FormBuilder,private ref:MatDialogRef<AddassociateComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: any){
+  @Inject(MAT_DIALOG_DATA) public data: any,private store:Store){
 
   }
   ngOnInit(): void {
     this.dialogdata = this.data;
     this.title = this.dialogdata.title;
-    throw new Error('Method not implemented.');
+    this.store.select(getassociate).subscribe(res => {
+      this.associateForm.setValue({
+        id: res.id, name: res.name, email: res.email, phone: res.phone,
+        address: res.address, group: res.associategroup, type: res.type, status: res.status
+      })
+    })
   }
 
   ClosePopup(){
@@ -38,7 +47,18 @@ export class AddassociateComponent implements OnInit{
 
   SaveAssociate(){
     if(this.associateForm.valid){
-
+      const obj:Associate={
+        id:this.associateForm.value.id as number,
+        name:this.associateForm.value.name as string,
+        email:this.associateForm.value.email as string,
+        phone:this.associateForm.value.phone as string,
+        associategroup :this.associateForm.value.group as string,
+        address:this.associateForm.value.address as string,
+        type:this.associateForm.value.type as string,
+        status:this.associateForm.value.status as boolean
+      }
+      this.store.dispatch(addassociate({inputdata:obj}))
+      this.ClosePopup()
     }
   }
 }
